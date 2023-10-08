@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <title>Sale</title>
+    <script src="app.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="game" onclick="tryToPickCard()">
+        <div id="game-flex-container">
+            <div class="game-flex-element" id="card-container">
+                <img id="card-img" src="cards/x32/patakuningas@32x.png" class="card-facing">
+                <img id="deck-img" src="cards/x32/pakka@32x.png">
+            </div>
+            <p   class="game-flex-element" id="card-name">Korttipakka</p>
+            <p   class="game-flex-element" id="card-description">Paina nostaaksesi kortin</p>
+            <p   class="game-flex-element" id="card-rules">Peli etenee ylhäältä katsottuna myötäpäivään.</p>
+            <p   class="game-flex-element" id="last-card-name"></p>
+        </div>
+    </div>
+</body>
+</html>

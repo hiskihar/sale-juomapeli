@@ -1,0 +1,68 @@
+body {
+    background-color: #1a1a24;
+    color: white;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 24pt;
+    text-align: center;
+}
+
+#card-container {
+    perspective: 1024px;
+    margin: 4vh 4vw;
+    height: 50vh;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+#card-img {
+    position: absolute;
+    transition: transform 0.5s ease-in-out;
+    height: 100%;
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
+    backface-visibility: hidden;
+}
+
+#deck-img {
+    position: absolute;
+    transition: transform 0.5s ease-in-out;
+    height: 100%;
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
+    backface-visibility: hidden;
+}
+
+#game-flex-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#last-card-name {
+    font-size: 12pt;
+}
+
+#card-rules {
+    background-color: #2d2d3d;
+    padding: 12pt;
+    border-radius: 4pt;
+    max-width: 480pt;
+    text-align: justify;
+    font-size: 16pt;
+}
+
+.game-flex-element {
+    margin: 2vh 2vw;
+}
+
+.card-facing {
+    transform: rotateY(360deg);
+}
+
+.deck-facing {
+    transform: rotateY(-360deg);
+}
