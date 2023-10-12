@@ -60,9 +60,9 @@ body {
 }
 
 .card-facing {
-    transform: rotateY(360deg);
+    transform: rotateY(180deg);
 }
 
 .deck-facing {
-    transform: rotateY(-360deg);
+    transform: rotateY(-180deg);
 }
