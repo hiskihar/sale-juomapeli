@@ -28,8 +28,6 @@ function pickCard() {
     cardIndex = getRandomInt(52);
 
     if (cardOneInStack) {
-        const newCard = document.getElementById("card-1-img");
-
         // Change card image
         document.getElementById("card-1-img").src = getCardImagePath(cardIndex);
         document.getElementById("card-name").textContent = getCardName(cardIndex);
@@ -45,8 +43,6 @@ function pickCard() {
         // Move card 2 to under-pos
         document.getElementById("card-2-img").className = ''
         document.getElementById("card-2-img").classList.add('under-pos');
-
-        newCard.style.transform
 
         setTimeout(() => {
             // Move card 2 to start-pos
