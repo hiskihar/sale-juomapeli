@@ -3,21 +3,26 @@ body {
     color: white;
     font-family: "JetBrains Mono", monospace;
     font-size: 24pt;
+    font-weight: 200;
     text-align: center;
 }
 
+#card-name {
+    font-weight: 600;
+}
+
 #card-container {
-    perspective: 1024px;
+    perspective: 1800px;
     margin: 4vh 4vw;
-    height: 50vh;
+    height: 256pt;
     align-items: center;
     display: flex;
     justify-content: center;
 }
 
-#card-img {
-    position: absolute;
+#card-1-img {
     transition: transform 0.5s ease-in-out;
+    position: absolute;
     height: 100%;
     -webkit-user-select: none; /* Safari */
     -ms-user-select: none; /* IE 10 and IE 11 */
@@ -25,14 +30,22 @@ body {
     backface-visibility: hidden;
 }
 
-#deck-img {
-    position: absolute;
+#card-2-img {
     transition: transform 0.5s ease-in-out;
+    position: absolute;
     height: 100%;
     -webkit-user-select: none; /* Safari */
     -ms-user-select: none; /* IE 10 and IE 11 */
     user-select: none; /* Standard syntax */
-    backface-visibility: hidden;
+}
+
+#deck-img {
+    transition: transform 0.5s ease-in-out;
+    position: absolute;
+    height: 100%;
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
 }
 
 #game-flex-container {
@@ -56,13 +69,44 @@ body {
 }
 
 .game-flex-element {
-    margin: 2vh 2vw;
+    margin: 16pt 16pt;
 }
 
-.card-facing {
-    transform: rotateY(360deg);
+.start-pos {
+    transform:
+        translateY(-60vh)
+        translateZ(256px)
+        rotateX(-60deg)
+    ;
+    opacity: 0;
+    z-index: 3;
 }
 
-.deck-facing {
-    transform: rotateY(-360deg);
+.stack-pos {
+    transform:
+        translateY(0)
+        translateZ(0)
+    ;
+    opacity: 1;
+    z-index: 2;
+}
+
+.under-pos {
+    transform:
+        translateY(0)
+        translateZ(-256px)
+        rotateX(15deg)
+    ;
+    animation: fadeOut 500ms linear 1;
+    z-index: 1;
+}
+
+@keyframes fadeOut {
+    0%   {opacity: 1;}
+    100% {opacity: 0;}
+}
+
+#version-info {
+    font-size: 12pt;
+    opacity: 0.3;
 }

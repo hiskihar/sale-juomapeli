@@ -5,7 +5,7 @@ let cardIndex = -1;
 let lastCardIndex = -1;
 let onCooldown = false;
 
-let firstPick = true
+let cardOneInStack = true;
 
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
@@ -13,7 +13,7 @@ function getRandomInt(max) {
 
 function tryToPickCard() {
     if (!onCooldown) {
-        pickCard()
+        pickCard();
         onCooldown = true;
         setTimeout(() => {
             onCooldown = false;
@@ -22,34 +22,60 @@ function tryToPickCard() {
 }
 
 function pickCard() {
-    if (firstPick) {
-        firstPick = false;
-        document.getElementById("card-img").classList.remove('card-facing');
-        document.getElementById("deck-img").classList.add('deck-facing');
-        lastCardIndex = cardIndex;
-        cardIndex = getRandomInt(52);
-        document.getElementById("card-img").src = getCardImagePath(cardIndex);
+    const delay = 500;
+
+    lastCardIndex = cardIndex;
+    cardIndex = getRandomInt(52);
+
+    if (cardOneInStack) {
+        const newCard = document.getElementById("card-1-img");
+
+        // Change card image
+        document.getElementById("card-1-img").src = getCardImagePath(cardIndex);
         document.getElementById("card-name").textContent = getCardName(cardIndex);
         document.getElementById("card-description").textContent = getCardDescription(cardIndex)[0];
         document.getElementById("card-rules").textContent = getCardDescription(cardIndex)[1];
-        document.getElementById("last-card-name").textContent = `Äskeinen kortti: ${getCardName(lastCardIndex)}`;
-    } else {
-        document.getElementById("card-img").classList.add('card-facing');
-        document.getElementById("deck-img").classList.remove('deck-facing');
-        setTimeout(() => {
-            document.getElementById("card-img").classList.remove('card-facing');
-            document.getElementById("deck-img").classList.add('deck-facing');
-        }, 500)
-        setTimeout(() => {
-            lastCardIndex = cardIndex;
-            cardIndex = getRandomInt(52);
-            document.getElementById("card-img").src = getCardImagePath(cardIndex);
-            document.getElementById("card-name").textContent = getCardName(cardIndex);
-            document.getElementById("card-description").textContent = getCardDescription(cardIndex)[0];
-            document.getElementById("card-rules").textContent = getCardDescription(cardIndex)[1];
+        if (lastCardIndex >= 0) {
             document.getElementById("last-card-name").textContent = `Äskeinen kortti: ${getCardName(lastCardIndex)}`;
-        }, 500)
+        }
+        // Move card 1 to stack-pos
+        document.getElementById("card-1-img").className = ''
+        document.getElementById("card-1-img").classList.add('stack-pos');
+        document.getElementById("card-1-img").classList.add('visible');
+        // Move card 2 to under-pos
+        document.getElementById("card-2-img").className = ''
+        document.getElementById("card-2-img").classList.add('under-pos');
+
+        newCard.style.transform
+
+        setTimeout(() => {
+            // Move card 2 to start-pos
+            document.getElementById("card-2-img").className = ''
+            document.getElementById("card-2-img").classList.add('start-pos');
+        }, delay)
+    } else {
+        document.getElementById("card-2-img").src = getCardImagePath(cardIndex);
+        document.getElementById("card-name").textContent = getCardName(cardIndex);
+        document.getElementById("card-description").textContent = getCardDescription(cardIndex)[0];
+        document.getElementById("card-rules").textContent = getCardDescription(cardIndex)[1];
+        if (lastCardIndex >= 0) {
+            document.getElementById("last-card-name").textContent = `Äskeinen kortti: ${getCardName(lastCardIndex)}`;
+        }
+        // Move card 2 to stack-pos
+        document.getElementById("card-2-img").className = ''
+        document.getElementById("card-2-img").classList.add('stack-pos');
+        document.getElementById("card-2-img").classList.add('visible');
+        // Move card 1 to under-pos
+        document.getElementById("card-1-img").className = ''
+        document.getElementById("card-1-img").classList.add('under-pos');
+
+        setTimeout(() => {
+            // Move card 1 to start-pos
+            document.getElementById("card-1-img").className = ''
+            document.getElementById("card-1-img").classList.add('start-pos');
+        }, delay)
     }
+    cardOneInStack = !cardOneInStack
 }
 
 function getCardImagePath(index) {
